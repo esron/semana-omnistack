@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  node:
+    image: node:lts-alpine
+    user: node
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - ${MY_PORT}:3333
+    command: npx nodemon
+
+volumes:
+  dbdata:
